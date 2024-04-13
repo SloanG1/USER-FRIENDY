@@ -1,4 +1,5 @@
 # Import files/modules
+from Name_Game import Name_Game
 import pygame
 import os
 
@@ -17,10 +18,20 @@ class Game_Window:
 
     # Helpers
     def draw_window(self):
+        pygame.init()
+        Name_game = Name_Game(23, 23, 23)
         Py_Window = pygame.display.set_mode((self.get_width(), self.get_height()))  # Create py window
         pygame.display.set_caption("USER FRIENDY")  # Window Game Caption
         Py_Window.fill((255, 255, 255))
         pygame.display.update()
+
+        font = pygame.font.Font('freesansbold.ttf', 32)
+        text = font.render('Please enter your first name', True, (0, 0, 0), (255, 255, 255))
+        textRect = text.get_rect()
+        textRect.center = (self.get_width() // 2, self.get_height() // 2)
+        Py_Window.blit(text, textRect)
+        pygame.display.update()
+
 
     # Getters
     def get_width(self):
