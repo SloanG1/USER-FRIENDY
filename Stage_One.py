@@ -57,7 +57,7 @@ class Stage_One:
     @staticmethod
     def update_init_name(self=None):
         font = pygame.font.Font('freesansbold.ttf', 32)
-        text = font.render('Please enter your first name', True, (255, 255, 255), (0, 0, 0))
+        text = font.render("Enter your first name", True, (255, 255, 255), (0, 0, 0))
         text_rect = text.get_rect()
         text_rect.center = (WIDTH // 2, HEIGHT // 3)
         Py_Window.blit(text, text_rect)
@@ -89,7 +89,6 @@ class Stage_One:
             # set width of textfield so that text cannot get
             # outside of user's text input
             name_box.w = max(100, text_surface.get_width() + 10)
-            self.__init_name = user_text
             pygame.display.update()
 
     @staticmethod
@@ -119,7 +118,11 @@ class Stage_One:
                             return False
 
                     else:
-                        user_text += event.unicode
+                        try:
+                            user_text += letter_dict.get(event.unicode)
+
+                        except TypeError:
+                            pass
 
             pygame.draw.rect(Py_Window, [0, 0, 0], name_box)
 
