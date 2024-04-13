@@ -1,6 +1,7 @@
 # Import files/modules
 import pygame
 import sys
+import time
 
 pygame.init()
 
@@ -48,14 +49,15 @@ letter_dict = {'A': 'g', 'B': 'C', 'C': 'x', 'D': 'F', 'E': 's',
 
 class Stage_One:
     # Data Attributes
+    __name = ''
 
     # Init
     def __init__(self, name_dict):
         self.set_name_dict(name_dict)
 
-    # Helpers
-    @staticmethod
-    def update_init_name(self=None):
+
+    # Helper
+    def update_init_name(self):
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render("Enter your first name", True, (255, 255, 255), (0, 0, 0))
         text_rect = text.get_rect()
@@ -63,7 +65,7 @@ class Stage_One:
         Py_Window.blit(text, text_rect)
 
         name_box = pygame.Rect(200, 200, 140, 32)
-        user_text = ''
+        user_init_text = ''
         while True:
             for event in pygame.event.get():
 
@@ -77,11 +79,12 @@ class Stage_One:
                     if event.key == pygame.K_RETURN:
                         return False
                     else:
-                        user_text += event.unicode
+                        user_init_text += event.unicode
+                        self.set_name = user_init_text
 
             pygame.draw.rect(Py_Window, [0, 0, 0], name_box)
 
-            text_surface = pygame.font.Font('freesansbold.ttf', 32).render(user_text, True, (255, 255, 255))
+            text_surface = pygame.font.Font('freesansbold.ttf', 32).render(user_init_text, True, (255, 255, 255))
 
             # render at position stated in arguments
             Py_Window.blit(text_surface, (WIDTH//2, HEIGHT//2))
@@ -91,8 +94,7 @@ class Stage_One:
             name_box.w = max(100, text_surface.get_width() + 10)
             pygame.display.update()
 
-    @staticmethod
-    def update_validate_name():
+    def update_validate_name(self):
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render('Validate name', True, (255, 255, 255), (0, 0, 0))
         text_rect = text.get_rect()
@@ -112,10 +114,23 @@ class Stage_One:
                     # Check for backspace
                     if event.key == pygame.K_RETURN:
                         if user_text in name_dict:
-                            Stage_One.update_dob()
+                            if user_text == self.get_name():
+                                Stage_One.update_dob()
+
+                            else:
+                                Py_Window.fill((0, 0, 0))  # Set Background color
+                                text = font.render('NAMES DO NOT MATCH', True, (255, 0, 0), (0, 0, 0))
+                                Py_Window.blit(text, text_rect)
+                                pygame.display.update()
+                                time.sleep(1)
                             return False
                         else:
-                            return False
+                            Py_Window.fill((0, 0, 0))  # Set Background color
+                            text = font.render('NAME IS NOT REAL', True, (255, 0, 0), (0, 0, 0))
+                            Py_Window.blit(text, text_rect)
+                            pygame.display.update()
+                            time.sleep(1)
+                            return True
 
                     else:
                         try:
@@ -178,12 +193,19 @@ class Stage_One:
     def get_name_dict(self):
         return self.__name_dict
 
+    def get_name(self):
+        return self.__name
+
     # Setters
     def set_name_dict(self, name_dict):
         self.__name_dict = name_dict
+
+    def set_name(self, name):
+        self.name = name
 
     # To String
     def __str__(self):
         stage_one_string = ""
         stage_one_string += ("Stage One Object Details->" +
-                             "\n\tName Dict: " + str(self.get_name_dict()))
+                             "\n\tName Dict: " + str(self.get_name_dict()) +
+                             "\n\tName: " + str(self.get_name()))
