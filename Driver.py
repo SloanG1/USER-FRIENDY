@@ -14,8 +14,5 @@ def main():
     pygame.quit()  # quits the game loop and exits window
 
 
-
-
-
 if __name__ == '__main__':
     main()

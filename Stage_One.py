@@ -33,10 +33,21 @@ name_dict = {'Gavin': 'June 16', 'Rebecca': 'June 16',
              'Jacob': 'May 1', 'Nicholas': 'May 7',
              'Anna': 'May 21', 'Katherine': 'May 29'}
 
+letter_dict = {'A': 'g', 'B': 'C', 'C': 'x', 'D': 'F', 'E': 's',
+               'F': 'i', 'G': 'I', 'H': 'm', 'I': 'Z', 'J': 'M',
+               'K': 'G', 'L': 'P', 'M': 'r', 'N': 'a', 'O': 'B',
+               'P': 'X', 'Q': 'A', 'R': 'n', 'S': 'J', 'T': 'e',
+               'U': 'f', 'V': 't', 'W': 'l', 'X': 'H', 'Y': 'w',
+               'Z': 'U', 'a': 'y', 'b': 'q', 'c': 'N', 'd': 'j',
+               'e': 'o', 'f': 'D', 'g': 'c', 'h': 'd', 'i': 'K',
+               'j': 'v', 'k': 'u', 'l': 'O', 'm': 'L', 'n': 'h',
+               'o': 'z', 'p': 'Q', 'q': 'k', 'r': 'E', 's': 'T',
+               't': 'R', 'u': 'W', 'v': 'b', 'w': 'Y', 'x': 'V',
+               'y': 'S', 'z': 'p'}
+
 
 class Stage_One:
     # Data Attributes
-    __Name_Dict = {}
 
     # Init
     def __init__(self, name_dict):
@@ -47,9 +58,9 @@ class Stage_One:
     def update_init_name(self=None):
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render('Please enter your first name', True, (255, 255, 255), (0, 0, 0))
-        textRect = text.get_rect()
-        textRect.center = (WIDTH // 2, HEIGHT // 3)
-        Py_Window.blit(text, textRect)
+        text_rect = text.get_rect()
+        text_rect.center = (WIDTH // 2, HEIGHT // 3)
+        Py_Window.blit(text, text_rect)
 
         name_box = pygame.Rect(200, 200, 140, 32)
         user_text = ''
@@ -85,9 +96,9 @@ class Stage_One:
     def update_validate_name():
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render('Validate name', True, (255, 255, 255), (0, 0, 0))
-        textRect = text.get_rect()
-        textRect.center = (WIDTH // 2, HEIGHT // 1.5)
-        Py_Window.blit(text, textRect)
+        text_rect = text.get_rect()
+        text_rect.center = (WIDTH // 2, HEIGHT // 1.5)
+        Py_Window.blit(text, text_rect)
         name_box = pygame.Rect(200, 200, 140, 32)
         user_text = ''
         while True:
@@ -102,7 +113,7 @@ class Stage_One:
                     # Check for backspace
                     if event.key == pygame.K_RETURN:
                         if user_text in name_dict:
-                            Stage_One.update_DoB()
+                            Stage_One.update_dob()
                             return False
                         else:
                             return False
@@ -123,13 +134,13 @@ class Stage_One:
             pygame.display.update()
 
     @staticmethod
-    def update_DoB():
+    def update_dob():
         Py_Window.fill((0, 0, 0))  # Set Background color
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render('Enter DoB', True, (255, 255, 255), (0, 0, 0))
-        textRect = text.get_rect()
-        textRect.center = (WIDTH // 2, HEIGHT // 3)
-        Py_Window.blit(text, textRect)
+        text_rect = text.get_rect()
+        text_rect.center = (WIDTH // 2, HEIGHT // 3)
+        Py_Window.blit(text, text_rect)
 
         name_box = pygame.Rect(200, 200, 140, 32)
         user_text = ''
@@ -162,11 +173,11 @@ class Stage_One:
 
     # Getters
     def get_name_dict(self):
-        return self.__Name_Dict
+        return self.__name_dict
 
     # Setters
     def set_name_dict(self, name_dict):
-        self.__Name_Dict = name_dict
+        self.__name_dict = name_dict
 
     # To String
     def __str__(self):
