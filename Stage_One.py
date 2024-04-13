@@ -8,7 +8,30 @@ WIDTH = 600
 HEIGHT = 500
 Py_Window = pygame.display.set_mode((WIDTH, HEIGHT))  # Create py window
 pygame.display.set_caption("USER FRIENDY")  # Window Game Caption
-name_dict = {'test':23}
+name_dict = {'Gavin': 'June 16', 'Rebecca': 'June 16',
+             'James': 'June 3', 'Joseph': 'June 25',
+             'Robert': 'July 4', 'Benjamin': 'July 11',
+             'Emma': 'July 19', 'Liam': 'July 30',
+             'Ava': 'August 1', 'Thomas': 'August 29',
+             'William': 'August 18', 'Henry': 'August 5',
+             'Lucas': 'September 2', 'David': 'September 10',
+             'Frank': 'September 13', 'Noah': 'September 27',
+             'Charlotte': 'October 6', 'Amelia': 'October 9',
+             'Charles': 'October 24', 'Olivia': 'October 17',
+             'Theodore': 'November 3', 'Edward': 'November 8',
+             'George': 'November 12', 'John': 'November 26',
+             'Daniel': 'December 1', 'Paul': 'December 10',
+             'Mary': 'December 14', 'Andrew': 'December 25',
+             'Jennifer': 'January 22', 'Richard': 'January 3',
+             'Sarah': 'January 19', 'Christopher': 'January 31',
+             'Matthew': 'February 5', 'Lisa': 'February 11',
+             'Margaret': 'February 20', 'Steven': 'February 29',
+             'Klayton': 'March 10', 'Ashley': 'March 13',
+             'Timothy': 'March 4', 'Brian': 'March 28',
+             'Michelle': 'April 2', 'Laura': 'April 8',
+             'Jason': 'April 16', 'Ryan': 'April 27',
+             'Jacob': 'May 1', 'Nicholas': 'May 7',
+             'Anna': 'May 21', 'Katherine': 'May 29'}
 
 
 class Stage_One:
