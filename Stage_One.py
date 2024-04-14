@@ -55,7 +55,6 @@ class Stage_One:
     def __init__(self, name_dict):
         self.set_name_dict(name_dict)
 
-
     # Helper
     def update_init_name(self):
         font = pygame.font.Font('freesansbold.ttf', 32)
@@ -87,7 +86,7 @@ class Stage_One:
             text_surface = pygame.font.Font('freesansbold.ttf', 32).render(user_init_text, True, (255, 255, 255))
 
             # render at position stated in arguments
-            Py_Window.blit(text_surface, (WIDTH//2, HEIGHT//2))
+            Py_Window.blit(text_surface, (WIDTH // 2, HEIGHT // 2))
 
             # set width of textfield so that text cannot get
             # outside of user's text input
