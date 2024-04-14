@@ -115,7 +115,7 @@ class Stage_One:
                     if event.key == pygame.K_RETURN:
                         if user_text in name_dict:
                             if user_text != self.get_name():
-                                Stage_One.update_dob()
+                                self.update_dob()
 
                             else:
                                 Py_Window.fill((0, 0, 0))  # Set Background color
@@ -130,7 +130,8 @@ class Stage_One:
                             Py_Window.blit(text, text_rect)
                             pygame.display.update()
                             time.sleep(1)
-                            return True
+                            return False
+
 
                     else:
                         try:
@@ -151,8 +152,7 @@ class Stage_One:
             name_box.w = max(100, text_surface.get_width() + 10)
             pygame.display.update()
 
-    @staticmethod
-    def update_dob():
+    def update_dob(self):
         Py_Window.fill((0, 0, 0))  # Set Background color
         font = pygame.font.Font('freesansbold.ttf', 32)
         text = font.render('Enter DoB', True, (255, 255, 255), (0, 0, 0))
@@ -173,7 +173,16 @@ class Stage_One:
 
                     # Check for backspace
                     if event.key == pygame.K_RETURN:
-                        return False
+                        if name_dict.get(self.get_name) == user_text:
+                            font = pygame.font.Font('freesansbold.ttf', 32)
+                            text = font.render('WELCOME', True, (255, 255, 255), (0, 0, 0))
+                            text_rect = text.get_rect()
+                            text_rect.center = (WIDTH // 2, HEIGHT // 3)
+                            Py_Window.blit(text, text_rect)
+                            pygame.display.update()
+                        else:
+                            return True
+
                     else:
                         user_text += event.unicode
 
