@@ -32,7 +32,8 @@ name_dict = {'Gavin': 'June 16', 'Rebecca': 'June 16',
              'Michelle': 'April 2', 'Laura': 'April 8',
              'Jason': 'April 16', 'Ryan': 'April 27',
              'Jacob': 'May 1', 'Nicholas': 'May 7',
-             'Anna': 'May 21', 'Katherine': 'May 29'}
+             'Anna': 'May 21', 'Katherine': 'May 29',
+             'Isaac': 'August 29'}
 
 letter_dict = {'A': 'g', 'B': 'C', 'C': 'x', 'D': 'F', 'E': 's',
                'F': 'i', 'G': 'I', 'H': 'm', 'I': 'Z', 'J': 'M',
@@ -113,19 +114,19 @@ class Stage_One:
                     # Check for backspace
                     if event.key == pygame.K_RETURN:
                         if user_text in name_dict:
-                            if user_text == self.get_name():
+                            if user_text != self.get_name():
                                 Stage_One.update_dob()
 
                             else:
                                 Py_Window.fill((0, 0, 0))  # Set Background color
-                                text = font.render('NAMES DO NOT MATCH', True, (255, 0, 0), (0, 0, 0))
+                                text = font.render('NAME IS NOT REAL', True, (255, 0, 0), (0, 0, 0))
                                 Py_Window.blit(text, text_rect)
                                 pygame.display.update()
                                 time.sleep(1)
                             return False
                         else:
                             Py_Window.fill((0, 0, 0))  # Set Background color
-                            text = font.render('NAME IS NOT REAL', True, (255, 0, 0), (0, 0, 0))
+                            text = font.render('NAMES DO NOT MATCH', True, (255, 0, 0), (0, 0, 0))
                             Py_Window.blit(text, text_rect)
                             pygame.display.update()
                             time.sleep(1)
